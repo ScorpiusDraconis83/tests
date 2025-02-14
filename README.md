@@ -1,7 +1,5 @@
 # Flutter Customer Test Registry
 
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/flutter/tests/badge)](https://api.securityscorecards.dev/projects/github.com/flutter/tests)
-
 This repository contains references to tests (in the `registry`
 directory) that are run with every commit to Flutter to verify that no
 breaking changes have been introduced (in the "customer_testing"
@@ -79,17 +77,14 @@ Tests must fulfill the following criteria to be added:
 
 ## Running the tests locally
 
-To run these tests locally, check out this directory in a directory
-parallel to your `flutter` repository checkout, then, from this
-directory, run:
+To run these tests locally, run:
 
 ```
-pushd ../flutter/dev/customer_testing && flutter pub get && popd
-../flutter/bin/cache/dart-sdk/bin/dart ../flutter/dev/customer_testing/run_tests.dart --skip-template --verbose registry/*.test
+./scripts/verify_tests_on_main.sh --local-flutter
 ```
 
-The first command retrieves the Dart packages used by `customer_testing`
-and can be omitted for subsequent executions.
+This will run all the tests using the `flutter` command that is in the `PATH`.
+Use `./scripts/verify_tests_on_main.sh --help` to see more options.
 
 ## If a test is broken
 
@@ -106,10 +101,10 @@ these tests to fail, you have the following options:
    Is the resulting API something that, as soon as you see it, you
    think "why?" or "that's weird"? That's bad. Consider the advice in
    the Style guide:
-   https://github.com/flutter/flutter/wiki/Style-guide-for-Flutter-repo
+   https://github.com/flutter/flutter/blob/master/docs/contributing/Style-guide-for-Flutter-repo.md
 
 2. Go through the breaking change process, as documented here:
-   https://github.com/flutter/flutter/wiki/Tree-hygiene#handling-breaking-changes
+   https://github.com/flutter/flutter/blob/master/docs/contributing/Tree-hygiene.md#handling-breaking-changes
    If you're going to do this, you will need to contact the relevant
    people responsible for the breaking test(s) (see the relevant .test
    files), help them fix their code, and update this repository to use
@@ -138,7 +133,7 @@ these tests to fail, you have the following options:
 If you have a significant body of tests that you would like to contribute,
 but are unable to do so using this registry either because they are proprietary,
 or because the volume of tests is too great for our CI, please consider reaching
-out on our [Discord server](https://github.com/flutter/flutter/wiki/Chat).
+out on our [Discord server](https://github.com/flutter/flutter/blob/master/docs/contributing/Chat.md).
 
 We are willing to add such tests to our CI, under the following conditions:
 
